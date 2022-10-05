@@ -1,1 +1,29 @@
-<p>leasing-contract-list works!</p>
+<p>Contract Overview</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Contract No</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Vehicle</th>
+        <th scope="col">VIN</th>
+        <th scope="col">Monthly Rate</th>
+        <th scope="col">Vehicle Price</th>
+        <th scope="col">Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let leasingContract of leasingContracts; index as i">
+        <td>
+            {{ leasingContract.contractNumber }}
+        </td>
+        <td>{{ leasingContract.vehicle?.vin ??  '---' }}</td>
+        <td>{{ leasingContract.vehicle?.vin ??  '---' }}</td>
+        <td>{{ leasingContract.vehicle?.vin ??  '---' }}</td>
+        <td>{{ leasingContract.monthlyRate}}</td>
+        <td>{{ leasingContract.vehicle?.price}}</td>
+        <td><a routerLink="/leasingContracts/{{leasingContract.id}}">Details</a></td>
+    </tr>
+    </tbody>
+</table>
+
