@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "newcomponent": "ng g class models/LeasingContract --type=model",
+    "newcomponent": "ng g component components/create-leasing-contract",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
