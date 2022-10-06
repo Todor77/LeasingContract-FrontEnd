@@ -7,6 +7,8 @@ import { LeasingContractListComponent } from './components/leasing-contract-list
 import { LeasingContractDetailsComponent } from './components/leasing-contract-details/leasing-contract-details.component';
 import { CreateLeasingContractComponent } from './components/create-leasing-contract/create-leasing-contract.component';
 import {HttpClientModule} from "@angular/common/http";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    FormsModule
+
 
   ],
   providers: [],
