@@ -1,85 +1,78 @@
-<div>
-    <div class="submit-form">
-        <div *ngIf="!submitted">
-            <div class="form-group">
-                <label for="contractNumber">ContractNumber</label>
-                <input
-                        type="text"
-                        class="form-control"
-                        id="contractNumber"
-                        required
-                        [(ngModel)]="leasingContract.contractNumber"
-                        name="contractNumber"
-                />
-            </div>
-            <div class="form-group">
-                <label for="monthlyRate">Monthly Rate</label>
-                <input
-                        class="form-control"
-                        id="monthlyRate"
-                        required
-                        [(ngModel)]="leasingContract.monthlyRate"
-                        name="monthlyRate"
-                />
-            </div>
-
-            <!--      <div class="form-group">-->
-            <!--        <label for="vehicleId">Vehicle ID</label>-->
-            <!--        <input-->
-            <!--          class="form-control"-->
-            <!--          id="vehicleId"-->
-            <!--          required-->
-            <!--          [(ngModel)]="vehicleId"-->
-            <!--          name="vehicleId"-->
-            <!--        />-->
-            <!--      </div>-->
-
-            <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.brand">
-                <label for="brand">Vehicle Brand</label>
-                <input
-                        type="text"
-                        class="form-control"
-                        id="brand"
-                        [(ngModel)]="leasingContract.vehicle.brand"
-                        name="brand"
-                />
-            </div>
-
-            <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.model">
-                <label for="model">Vehicle Model</label>
-                <input
-                        type="text"
-                        class="form-control"
-                        id="model"
-                        [(ngModel)]="leasingContract.vehicle.model"
-                        name="model"
-                />
-            </div>
-
-            <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.year">
-                <label for="year">Vehicle Year</label>
-                <input
-                        type="text"
-                        class="form-control"
-                        id="year"
-                        [(ngModel)]="leasingContract.vehicle.year"
-                        name="year"
-                />
-            </div>
-
-            <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.vin">
-                <label for="vin">Vehicle VIN</label>
-                <input
-                        type="text"
-                        class="form-control"
-                        id="vin"
-                        [(ngModel)]="leasingContract.vehicle.vin"
-                        name="vin"
-                />
-            </div>
-
-            <button (click)="saveLeasingContract()" class="btn btn-success">Submit</button>
-        </div>
-
+<form [formGroup]="leasingContractForm" (ngSubmit)="createLeasingContract()">
+    <div class="form-group">
+        <label for="contractNumber">ContractNumber</label>
+        <input
+                id="contractNumber"
+                type="text"
+                class="form-control"
+                formControlName="contractNumber"
+        />
     </div>
-</div>
+
+    <div class="form-group">
+        <label for="monthlyRate">Monthly Rate</label>
+        <input
+                type="text"
+                class="form-control"
+                id="monthlyRate"
+                name="monthlyRate"
+                formControlName="monthlyRate"
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="customer">Customer</label>
+        <input
+                type="text"
+                class="form-control"
+                id="customer"
+                name="customer"
+                formControlName="customer"
+        />
+    </div>
+    <div class="form-group">
+
+        <label for="country">Customer Choose </label>
+        <select id="country" name="country" formControlName="country">
+            <option value="1">India</option>
+            <option value="2">USA</option>
+            <option value="3">England</option>
+            <option value="4">Singapore</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="vehicle">Vehicle</label>
+        <input
+                class="form-control"
+                id="vehicle"
+                required
+                [(ngModel)]="leasingContract.monthlyRate"
+                name="vehicle"
+        />
+    </div>
+
+    <div class="form-group">
+
+        <label for="country">Vehicle Choose </label>
+        <select id="vehicleChoose" name="country" formControlName="country">
+            <option value="1">India</option>
+            <option value="2">USA</option>
+            <option value="3">England</option>
+            <option value="4">Singapore</option>
+        </select>
+    </div>
+
+    <button class="btn btn-danger" (click)="cancel()">
+        Cancel
+    </button>
+
+    <button
+            type="submit" class="btn btn-success">
+        Create
+    </button>
+</form>
+<p>{{ message }}</p>
+
+
+

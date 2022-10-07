@@ -3,59 +3,60 @@ import {LeasingContract} from "../../models/leasing-contract.model";
 import {LeasingContractService} from "../../services/leasing-contract.service";
 import {Vehicle} from "../../models/vehicle.model";
 import {Customer} from "../../models/customer.model";
+import {FormControl, FormGroup} from "@angular/forms";
+import {VehicleService} from "../../services/vehicle.service";
+import {CustomerService} from "../../services/customer.service";
 
 @Component({
-  selector: 'app-create-leasing-contract',
-  templateUrl: './create-leasing-contract.component.html',
-  styleUrls: ['./create-leasing-contract.component.css']
+  selector: 'app-create-lesing-contract',
+  templateUrl: './create-lesing-contract.component.html',
+  styleUrls: ['./create-lesing-contract.component.scss']
 })
-export class CreateLeasingContractComponent implements OnInit {
+export class CreateLesingContractComponent implements OnInit {
 
-  leasingContract : LeasingContract = {
-    contractNumber: 0,
-    monthlyRate: 0,
-    vehicle: new Vehicle(),
-    customer: new Customer()
+
+  leasingContractForm = new FormGroup({
+    contractNumber: new FormControl(''),
+    monthlyRate: new FormControl(''),
+    customer: new FormControl(''),
+    vehicle: new FormControl('')
+  });
+
+  leasingContract: LeasingContract;
+  message: string = ''
+
+
+  constructor(private leasingContractService: LeasingContractService,
+              private vehicleService: VehicleService,
+              private customerService: CustomerService) {
+    this.leasingContract = new LeasingContract();
   }
-
-  vehicleId: number = 0;
-  submitted = false;
-
-  constructor(private leasingContractService: LeasingContractService) { }
 
   ngOnInit(): void {
   }
 
-  saveLeasingContract(): void {
-    const data = {
-      contractNumber: this.leasingContract.contractNumber,
-      monthlyRate: this.leasingContract.monthlyRate,
-      vehicle: new Vehicle()
-    };
-
+  createLeasingContract(): void {
+    this.prepareLeasingContract();
 //need to be fixed dinamicaly
     let vehicle = new Vehicle();
-    vehicle.id = this.vehicleId;
-    data.vehicle = vehicle;
-
-
-    this.leasingContractService.create(data)
+    vehicle.id = 1;
+    this.leasingContract.vehicle = vehicle
+    this.leasingContractService.create(this.leasingContract)
         .subscribe({
           next: (res) => {
             console.log(res);
-            this.submitted = true;
+            this.message = res.message ? res.message : 'Customer was created!'
           },
           error: (e) => console.error(e)
         });
   }
 
-  newLeasingContract(): void {
-    this.submitted = false;
-    this. leasingContract = {
-      contractNumber: undefined,
-      monthlyRate: undefined,
-      vehicle: undefined
-    };
+  prepareLeasingContract() {
+    // this.leasingContract.contractNumber = this.leasingContractForm.get('contractNumber')
+  }
+
+
+  cancel() : void {
   }
 
 }
