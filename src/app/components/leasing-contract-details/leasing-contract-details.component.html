@@ -1,1 +1,112 @@
-<p>leasing-contract-details works!</p>
+<div  class="edit-form">
+    <h4>Leasing Contract</h4>
+    <form>
+        <div class="form-group">
+            <label for="contractNumber">ContractNo</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="contractNumber"
+                    [(ngModel)]="leasingContract.contractNumber"
+                    name="contractNumber"
+            />
+        </div>
+        <div class="form-group">
+            <label for="monthlyRate">Monthly Rate</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="monthlyRate"
+                    [(ngModel)]="leasingContract.monthlyRate"
+                    name="monthlyRate"
+            />
+        </div>
+
+        <div class="form-group" *ngIf="leasingContract.customer && leasingContract.customer.firstName">
+            <label for="firstName">Customer First Name</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    [(ngModel)]="leasingContract.customer.firstName"
+                    name="firstName"
+            />
+        </div>
+
+        <div class="form-group" *ngIf="leasingContract.customer && leasingContract.customer.lastName">
+            <label for="lastName">Customer LastName</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    [(ngModel)]="leasingContract.customer.lastName"
+                    name="lastName"
+            />
+        </div>
+
+        <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.brand">
+            <label for="brand">Vehicle Brand</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="brand"
+                    [(ngModel)]="leasingContract.vehicle.brand"
+                    name="brand"
+            />
+        </div>
+
+        <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.model">
+            <label for="model">Vehicle Model</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="model"
+                    [(ngModel)]="leasingContract.vehicle.model"
+                    name="model"
+            />
+        </div>
+
+        <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.year">
+            <label for="year">Vehicle Year</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="year"
+                    [(ngModel)]="leasingContract.vehicle.year"
+                    name="year"
+            />
+        </div>
+
+        <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.vin">
+            <label for="vin">Vehicle VIN</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="vin"
+                    [(ngModel)]="leasingContract.vehicle.vin"
+                    name="vin"
+            />
+        </div>
+
+
+
+    </form>
+
+
+    <button class="" (click)="cancel()">
+        Cancel
+    </button>
+
+    <button
+            type="submit"
+            class=""
+            (click)="saveLeasingContract()">
+        Update
+    </button>
+    <!--    <p>{{ message }}</p>-->
+</div>
+
+<!--  <div *ngIf="!leasingContract.id">-->
+<!--    <br />-->
+<!--    <p>Cannot access this Contact...</p>-->
+<!--  </div>-->
