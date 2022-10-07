@@ -1,1 +1,67 @@
-<p>vehicle-details works!</p>
+<div class="form-group" *ngIf="vehicle">
+    <label for="brand">Brand</label>
+    <input
+            type="text"
+            class="form-control"
+            id="brand"
+            [(ngModel)]="vehicle.brand"
+            name="brand"
+    />
+</div>
+
+<div class="form-group" *ngIf="vehicle && vehicle.model">
+    <label for="model">Model</label>
+    <input
+            type="text"
+            class="form-control"
+            id="model"
+            [(ngModel)]="vehicle.model"
+            name="model"
+    />
+</div>
+
+<div class="form-group" *ngIf="vehicle && vehicle.year">
+    <label for="year">YEAR</label>
+    <input
+            type="text"
+            class="form-control"
+            id="year"
+            [(ngModel)]="vehicle.year"
+            name="year"
+    />
+</div>
+
+<div class="form-group" *ngIf="vehicle && vehicle.vin">
+    <label for="vin">VIN</label>
+    <input
+            type="text"
+            class="form-control"
+            id="vin"
+            [(ngModel)]="vehicle.vin"
+            name="vin"
+    />
+</div>
+
+<div class="form-group" *ngIf="vehicle && vehicle.price">
+    <label for="price">Price</label>
+    <input
+            type="text"
+            class="form-control"
+            id="price"
+            [(ngModel)]="vehicle.price"
+            name="price"
+    />
+</div>
+
+<button class="btn btn-danger" (click)="cancel()">
+    Cancel
+</button>
+
+<button
+        type="submit"
+        class="btn btn-success"
+        (click)="saveVehicle()">
+    Update
+</button>
+
+<p>{{ message }}</p>
