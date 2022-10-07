@@ -8,11 +8,12 @@ import { LeasingContractDetailsComponent } from './components/leasing-contract-d
 import { CreateLeasingContractComponent } from './components/create-leasing-contract/create-leasing-contract.component';
 import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
 import { CreateVehicleComponent } from './components/create-vehicle/create-vehicle.component';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -30,11 +31,12 @@ import { CreateVehicleComponent } from './components/create-vehicle/create-vehic
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

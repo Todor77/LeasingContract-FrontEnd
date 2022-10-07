@@ -8,22 +8,28 @@ import {VehicleService} from "../../services/vehicle.service";
 import {CustomerService} from "../../services/customer.service";
 
 @Component({
-  selector: 'app-create-lesing-contract',
-  templateUrl: './create-lesing-contract.component.html',
-  styleUrls: ['./create-lesing-contract.component.scss']
+  selector: 'app-create-leasing-contract',
+  templateUrl: './create-leasing-contract.component.html',
+  styleUrls: ['./create-leasing-contract.component.scss']
 })
-export class CreateLesingContractComponent implements OnInit {
+export class CreateLeasingContractComponent implements OnInit {
 
 
   leasingContractForm = new FormGroup({
     contractNumber: new FormControl(''),
     monthlyRate: new FormControl(''),
     customer: new FormControl(''),
-    vehicle: new FormControl('')
+    vehicle: new FormControl(''),
   });
 
   leasingContract: LeasingContract;
   message: string = ''
+
+  vehicles: Vehicle[] = [];
+  customers: Customer[] = [];
+
+  tempCustomer: Customer = new Customer();
+  tempVehicle: Vehicle = new Vehicle();
 
 
   constructor(private leasingContractService: LeasingContractService,
@@ -33,26 +39,59 @@ export class CreateLesingContractComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllVehicles();
+    this.getAllCustomers();
   }
 
   createLeasingContract(): void {
+    console
     this.prepareLeasingContract();
-//need to be fixed dinamicaly
-    let vehicle = new Vehicle();
-    vehicle.id = 1;
-    this.leasingContract.vehicle = vehicle
     this.leasingContractService.create(this.leasingContract)
         .subscribe({
           next: (res) => {
             console.log(res);
-            this.message = res.message ? res.message : 'Customer was created!'
+            this.message = res.message ? res.message : 'Leasing Contract was created!'
           },
           error: (e) => console.error(e)
         });
   }
 
   prepareLeasingContract() {
-    // this.leasingContract.contractNumber = this.leasingContractForm.get('contractNumber')
+
+    this.leasingContract.contractNumber = Number(this.leasingContractForm.get('contractNumber')?.value);
+    this.leasingContract.monthlyRate = Number(this.leasingContractForm.get('monthlyRate')?.value);
+
+    this.tempCustomer.id = Number(this.leasingContractForm.get('customer')?.value);
+    this.tempVehicle.id = Number(this.leasingContractForm.get('vehicle')?.value);
+    this.leasingContract.customer = this.tempCustomer;
+    this.leasingContract.vehicle = this.tempVehicle;
+
+    this.resetTempObj();
+  }
+
+  resetTempObj() {
+    this.tempVehicle = new Vehicle();
+    this.tempCustomer = new Customer();
+  }
+
+  getAllCustomers() {
+    this.customerService.getAll()
+        .subscribe({
+          next: (res) => {
+            this.customers = res;
+          },
+          error: (e) => console.log(e)
+        })
+  }
+
+  getAllVehicles() {
+    this.vehicleService.getAll()
+        .subscribe({
+          next: (res) => {
+            this.vehicles = res;
+          },
+          error: (e) => console.log(e)
+        })
   }
 
 
