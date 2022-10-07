@@ -9,13 +9,21 @@ import { CreateLeasingContractComponent } from './components/create-leasing-cont
 import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule} from "@angular/forms";
+import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
+import { CreateVehicleComponent } from './components/create-vehicle/create-vehicle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LeasingContractListComponent,
     LeasingContractDetailsComponent,
-    CreateLeasingContractComponent
+    CreateLeasingContractComponent,
+    CreateCustomerComponent,
+    CustomerDetailsComponent,
+    VehicleDetailsComponent,
+    CreateVehicleComponent
   ],
   imports: [
     BrowserModule,

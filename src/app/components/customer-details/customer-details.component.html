@@ -1,0 +1,45 @@
+<div class="form-group" *ngIf="customer">
+    <label for="firstName">Customer First Name</label>
+    <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            [(ngModel)]="customer.firstName"
+            name="firstName"
+    />
+</div>
+
+<div class="form-group" *ngIf="customer && customer.lastName">
+    <label for="lastName">Customer LastName</label>
+    <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            [(ngModel)]="customer.lastName"
+            name="lastName"
+    />
+</div>
+
+<div class="form-group" *ngIf="customer && customer.birthDate">
+    <label for="birthDate">Customer BirthDate</label>
+    <input
+            type="text"
+            class="form-control"
+            id="birthDate"
+            [(ngModel)]="customer.birthDate"
+            name="birthDate"
+    />
+</div>
+
+<button class="" (click)="cancel()">
+    Cancel
+</button>
+
+<button
+        type="submit"
+        class=""
+        (click)="saveCustomer()">
+    Update
+</button>
+
+<p>{{ message }}</p>

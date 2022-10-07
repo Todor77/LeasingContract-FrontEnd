@@ -17,8 +17,8 @@
         <td>
             {{ leasingContract.contractNumber }}
         </td>
-        <td>{{ leasingContract.vehicle?.vin ??  '---' }}</td>
-        <td>{{ leasingContract.vehicle?.vin ??  '---' }}</td>
+        <td><a  routerLink="/customers/{{leasingContract.customer?.id}}"> {{ leasingContract.customer?.firstName }} {{ leasingContract.customer?.lastName }}</a></td>
+        <td><a  routerLink="/vehicles/{{leasingContract.vehicle?.id}}">{{ leasingContract.vehicle?.brand }} {{ leasingContract.vehicle?.model }}({{ leasingContract.vehicle?.year }})</a></td>
         <td>{{ leasingContract.vehicle?.vin ??  '---' }}</td>
         <td>{{ leasingContract.monthlyRate}}</td>
         <td>{{ leasingContract.vehicle?.price}}</td>
