@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+###Start the Project
+1. npm install
+2. ng serve
+
+##Special properties for starting the Project
+you can load the Project as a Maven Project and then
+ 1. exec. maven install and the project should run on http://localhost:4200/
+
+ explanation : ive got problems with the local node and npm , so im using node maven plugin to use npm and node in the project,
+ in this case is better because you can have specific node and npm for each project
