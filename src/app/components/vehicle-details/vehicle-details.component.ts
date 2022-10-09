@@ -5,6 +5,7 @@ import {VehicleService} from "../../services/vehicle.service";
 import {Brand} from "../../models/brand";
 import {Model} from "../../models/model";
 import {BrandService} from "../../services/brand.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -22,7 +23,8 @@ export class VehicleDetailsComponent implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private vehicleService: VehicleService,
-                private brandService: BrandService) {
+                private brandService: BrandService,
+                private router: Router) {
         this.vehicle = new Vehicle();
 
     }
@@ -92,7 +94,7 @@ export class VehicleDetailsComponent implements OnInit {
 
 
     cancel() : void {
-
+        this.router.navigate(['/']);
     }
 
 }

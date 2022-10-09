@@ -6,6 +6,7 @@ import {Customer} from "../../models/customer.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {VehicleService} from "../../services/vehicle.service";
 import {CustomerService} from "../../services/customer.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-leasing-contract',
@@ -35,7 +36,8 @@ export class CreateLeasingContractComponent implements OnInit {
 
   constructor(private leasingContractService: LeasingContractService,
               private vehicleService: VehicleService,
-              private customerService: CustomerService) {
+              private customerService: CustomerService,
+              private router: Router) {
     this.leasingContract = new LeasingContract();
   }
 
@@ -112,6 +114,7 @@ export class CreateLeasingContractComponent implements OnInit {
 
 
   cancel() : void {
+    this.router.navigate(['/']);
   }
 
 }

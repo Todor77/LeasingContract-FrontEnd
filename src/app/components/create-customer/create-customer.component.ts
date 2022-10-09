@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {CustomerService} from "../../services/customer.service";
 import {DatePipe} from "@angular/common";
 import {FormControl, FormGroup} from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-customer',
@@ -23,7 +24,8 @@ export class CreateCustomerComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private customerService: CustomerService,
-              private datePipe: DatePipe) {
+              private datePipe: DatePipe,
+              private router: Router) {
     this.customer = new Customer();
   }
 
@@ -48,6 +50,7 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   cancel() : void {
+    this.router.navigate(['/']);
   }
 
 }

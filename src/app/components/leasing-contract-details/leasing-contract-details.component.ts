@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LeasingContract} from "../../models/leasing-contract.model";
 import {LeasingContractService} from "../../services/leasing-contract.service";
 import {ActivatedRoute} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leasing-contract-details',
@@ -15,7 +16,8 @@ export class LeasingContractDetailsComponent implements OnInit {
 
 
   constructor(private leasingService: LeasingContractService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     this.leasingContract = new LeasingContract();
   }
 
@@ -51,7 +53,7 @@ export class LeasingContractDetailsComponent implements OnInit {
 
 
   cancel() : void {
-
+      this.router.navigate(['/']);
   }
 
 }
