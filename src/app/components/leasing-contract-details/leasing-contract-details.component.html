@@ -44,28 +44,21 @@
             />
         </div>
 
-        <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.brand">
-            <label for="brand">Vehicle Brand</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    id="brand"
-                    [(ngModel)]="leasingContract.vehicle.brand"
-                    name="brand"
-            />
+        <br>
+        <div class="form-group">
+            <label for="brand">Brands</label>
+            <select id="brand" name="brand" (change)="selectBrand($event.target)">
+                <option  *ngFor="let brand of brands" [value]="brand.id" [selected]="brand.name == leasingContract.vehicle?.brand">{{brand.name}}</option>
+            </select>
         </div>
 
-        <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.model">
-            <label for="model">Vehicle Model</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    id="model"
-                    [(ngModel)]="leasingContract.vehicle.model"
-                    name="model"
-            />
+        <div class="form-group">
+            <label for="model">Model</label>
+            <select id="model" name="model" (change)="selectModel($event.target)">
+                <option *ngFor="let model of models" [value]="model.name" [selected]="model.name == leasingContract.vehicle?.model">{{model.name}}</option>
+            </select>
         </div>
-
+        <br>
         <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.year">
             <label for="year">Vehicle Year</label>
             <input
@@ -103,10 +96,5 @@
             (click)="saveLeasingContract()">
         Update
     </button>
-    <!--    <p>{{ message }}</p>-->
+        <p>{{ message }}</p>
 </div>
-
-<!--  <div *ngIf="!leasingContract.id">-->
-<!--    <br />-->
-<!--    <p>Cannot access this Contact...</p>-->
-<!--  </div>-->
