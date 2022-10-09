@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "newcomponent": "ng generate component components/create-vehicle",
+    "newcomponent": "ng g s services/brand",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
