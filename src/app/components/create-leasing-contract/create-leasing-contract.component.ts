@@ -26,6 +26,7 @@ export class CreateLeasingContractComponent implements OnInit {
   message: string = ''
 
   vehicles: Vehicle[] = [];
+  tempVehicles: Vehicle[] = [];
   customers: Customer[] = [];
 
   tempCustomer: Customer = new Customer();
@@ -88,11 +89,26 @@ export class CreateLeasingContractComponent implements OnInit {
     this.vehicleService.getAll()
         .subscribe({
           next: (res) => {
-            this.vehicles = res;
+            this.tempVehicles = res;
+            this.filterVehicles();
           },
           error: (e) => console.log(e)
         })
   }
+
+  filterVehicles() {
+    for (let i = 0; i < this.tempVehicles.length; i++) {
+      console.log(this.tempVehicles[i].id);
+      console.log("available" +this.tempVehicles[i].available);
+
+      if(this.tempVehicles[i].available === true) {
+        this.vehicles.push(this.tempVehicles[i]);
+      }
+      console.log(this.vehicles);
+    }
+
+  }
+
 
 
   cancel() : void {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Vehicle1} from "../models/vehicle.model";
+import {Vehicle} from "../models/vehicle.model";
 
 const baseUrl = 'http://localhost:8080/leasing/vehicles';
 
@@ -12,12 +12,12 @@ export class VehicleService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Vehicle1[]> {
-    return this.http.get<Vehicle1[]>(baseUrl);
+  getAll(): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(baseUrl);
   }
 
-  get(id:any) : Observable<Vehicle1> {
-    return this.http.get<Vehicle1>(`${baseUrl}/${id}`)
+  get(id:any) : Observable<Vehicle> {
+    return this.http.get<Vehicle>(`${baseUrl}/${id}`)
   }
 
   create(data:any): Observable<any> {

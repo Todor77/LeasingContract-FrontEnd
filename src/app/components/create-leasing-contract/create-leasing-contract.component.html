@@ -36,6 +36,8 @@
             <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">{{vehicle.model}} {{vehicle.brand}}, ({{vehicle.year}})</option>
         </select>
     </div>
+    <p *ngIf="vehicles.length < 1">No Vehicles available!</p>
+
     <br>
 
     <button class="btn btn-danger" (click)="cancel()">

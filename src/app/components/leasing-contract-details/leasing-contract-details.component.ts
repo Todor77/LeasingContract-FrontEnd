@@ -2,8 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LeasingContract} from "../../models/leasing-contract.model";
 import {LeasingContractService} from "../../services/leasing-contract.service";
 import {ActivatedRoute} from "@angular/router";
-import {Vehicle, Vehicle1} from "../../models/vehicle.model";
-import {Customer} from "../../models/customer.model";
 
 @Component({
   selector: 'app-leasing-contract-details',
@@ -14,7 +12,6 @@ export class LeasingContractDetailsComponent implements OnInit {
 
   message = '';
   leasingContract: LeasingContract;
-  vehicles: Vehicle1[] = [];
 
 
   constructor(private leasingService: LeasingContractService,
