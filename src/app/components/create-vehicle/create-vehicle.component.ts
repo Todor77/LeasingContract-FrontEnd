@@ -69,7 +69,6 @@ export class CreateVehicleComponent implements OnInit {
   }
 
   selectBrand(target: any) {
-    console.log("target = " + target.value);
     this.models = this.brands[target.value-1].models;
   }
 

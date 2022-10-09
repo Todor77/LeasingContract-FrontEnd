@@ -78,14 +78,9 @@ export class LeasingContractDetailsComponent implements OnInit {
 
     selectBrand(target: any) {
         this.models = this.brands[target.value-1].models;
-
-        console.log("booo " + this.brands[target.value-1].name)
-        console.log("tttt " + this.models[0].name)
         if(this.leasingContract.vehicle) {
             this.leasingContract.vehicle.brand = this.brands[target.value-1].name;
             this.leasingContract.vehicle.model = this.models[0].name;
-            console.log("nje123123123e");
-
         }
     }
 
@@ -98,7 +93,6 @@ export class LeasingContractDetailsComponent implements OnInit {
         })
         if(this.leasingContract.vehicle) {
             this.leasingContract.vehicle.model = tempModel;
-            console.log("njee");
         }
     }
 

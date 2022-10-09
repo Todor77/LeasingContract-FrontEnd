@@ -38,7 +38,6 @@ export class CreateCustomerComponent implements OnInit {
     this.customerService.create(this.customer)
         .subscribe({
           next: (res) => {
-            console.log(res);
             this.message = res.message ? res.message : 'Customer was created!'
           },
           error: (e) => console.log(e)

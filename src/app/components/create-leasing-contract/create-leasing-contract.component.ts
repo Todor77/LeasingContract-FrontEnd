@@ -47,12 +47,10 @@ export class CreateLeasingContractComponent implements OnInit {
   }
 
   createLeasingContract(): void {
-    console
     this.prepareLeasingContract();
     this.leasingContractService.create(this.leasingContract)
         .subscribe({
           next: (res) => {
-            console.log(res);
             this.message = res.message ? res.message : 'Leasing Contract was created!'
           },
           error: (e) => console.error(e)
@@ -100,13 +98,10 @@ export class CreateLeasingContractComponent implements OnInit {
 
   filterVehicles() {
     for (let i = 0; i < this.tempVehicles.length; i++) {
-      console.log(this.tempVehicles[i].id);
-      console.log("available" +this.tempVehicles[i].available);
 
       if(this.tempVehicles[i].available === true) {
         this.vehicles.push(this.tempVehicles[i]);
       }
-      console.log(this.vehicles);
     }
 
   }

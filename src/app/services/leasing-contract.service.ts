@@ -26,7 +26,6 @@ export class LeasingContractService {
   }
 
   update(id: any, data: any): Observable<any> {
-    console.log("update id = " + id)
     return this.http.put(`${baseUrl}/${id}`, data)
   }
 

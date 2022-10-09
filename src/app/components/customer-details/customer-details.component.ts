@@ -28,7 +28,6 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   getCustomer(id: string): void {
-    console.log("ID = " + id);
     this.customerService.get(id)
         .subscribe({
           next: (data) => {
@@ -43,7 +42,6 @@ export class CustomerDetailsComponent implements OnInit {
     this.customerService.update(this.customer.id, this.customer)
         .subscribe({
           next: (res) => {
-            console.log(res);
             this.message = res.message ? res.message : 'This Customer was updated'
           },
           error: (e) => console.log(e)
