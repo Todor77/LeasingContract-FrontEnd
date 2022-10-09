@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {Customer} from "../../models/customer.model";
 import {ActivatedRoute} from "@angular/router";
+import {DatePipe} from "@angular/common";
 import { Vehicle } from 'src/app/models/vehicle.model';
 import {VehicleService} from "../../services/vehicle.service";
 import {BrandService} from "../../services/brand.service";
@@ -43,9 +45,6 @@ export class CreateVehicleComponent implements OnInit {
         .subscribe({
           next: (res) => {
             this.brands = res;
-            console.log("brands = " + this.brands[0].id + " name = "+ this.brands[0].name);
-            console.log("brands = " + this.brands[1].id + " name = "+ this.brands[1].name);
-            console.log("brands = " + this.brands[2].id + " name = "+ this.brands[2].name);
           },
           error: (e) => console.log(e)
         })
@@ -54,7 +53,6 @@ export class CreateVehicleComponent implements OnInit {
   createVehicle(): void {
     this.prepareVehicle();
 
-    console.log(this.vehicle);
     this.vehicleService.create(this.vehicle)
         .subscribe({
           next: (res) => {

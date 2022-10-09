@@ -1,24 +1,4 @@
 <form [formGroup]="createVehicleform" (ngSubmit)="createVehicle()">
-    <!--  <div class="form-group">-->
-    <!--    <label for="brand">Brand</label>-->
-    <!--    <input-->
-    <!--      id="brand"-->
-    <!--      type="text"-->
-    <!--      class="form-control"-->
-    <!--      formControlName="brand"-->
-    <!--    />-->
-    <!--  </div>-->
-
-    <!--  <div class="form-group">-->
-    <!--    <label for="model">Model</label>-->
-    <!--    <input-->
-    <!--      type="text"-->
-    <!--      class="form-control"-->
-    <!--      id="model"-->
-    <!--      name="model"-->
-    <!--      formControlName="model"-->
-    <!--    />-->
-    <!--  </div>-->
 
     <br>
     <div class="form-group">
@@ -26,16 +6,16 @@
         <select id="brand" name="brand" (change)="selectBrand($event.target)" formControlName="brand">
             <option value="" selected disabled hidden>Select One</option>
             <option >Select One</option>
-            <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}})</option>
+            <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
         </select>
     </div>
 
     <div class="form-group">
         <label for="model">Model</label>
         <select id="model" name="model" formControlName="model">
-            <option *ngIf="models.length > 2" value="" selected disabled hidden>Select One</option>
+          <option *ngIf="models.length > 2" value="" selected disabled hidden>Select One</option>
             <option >Select One</option>
-            <option *ngFor="let model of models" [value]="model.id">{{model.name}})</option>
+            <option *ngFor="let model of models" [value]="model.id">{{model.name}}</option>
         </select>
     </div>
     <br>
@@ -82,21 +62,3 @@
     </button>
 </form>
 <p>{{ message }}</p>
-
-
-
-<!--<br>-->
-<!--<div class="form-group">-->
-<!--  <label for="brand">Brands</label>-->
-<!--  <select id="brand" name="brand" (change)="selectBrand($event.target)">-->
-<!--    <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}})</option>-->
-<!--  </select>-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--  <label for="model">Model</label>-->
-<!--  <select id="model" name="model1">-->
-<!--    <option *ngFor="let model of models" [value]="model.id">{{model.name}})</option>-->
-<!--  </select>-->
-<!--</div>-->
-<!--<br>-->
