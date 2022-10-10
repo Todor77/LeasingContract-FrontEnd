@@ -36,9 +36,13 @@ Here ive got Problems with local node and npm, where I lost a day to fix and in 
 ##2 Way of starting the project
 
 ###Start the Project 1 way
+<node.version>v18.10.0</node.version>
+<npm.version>8.19.0</npm.version>
+0.locally installed node and npm
 1. npm install
 2. ng serve
 
-##Special properties for starting the Project - 2 way
+##Special properties for starting the Project - 2 way - Not working , will be fixed in future
  1. load the Project as a Maven Project and then
  2. exec. maven install and the project should run on http://localhost:4200/
+ Possible Problems: node_module are installed in folder node, and should be on /LeasingContract-FrontEnd/
