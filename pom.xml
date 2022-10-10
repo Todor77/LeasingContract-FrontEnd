@@ -28,13 +28,13 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>new-component or start</id>
+                        <id>npm start-local</id>
                         <goals>
                             <goal>npm</goal>
                         </goals>
                         <configuration>
                             <arguments>
-                               run newcomponent
+                                run start
                             </arguments>
                         </configuration>
                     </execution>
