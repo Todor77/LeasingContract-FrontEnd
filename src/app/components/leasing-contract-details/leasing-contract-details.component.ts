@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import {BrandService} from "../../services/brand.service";
 import {Brand} from "../../models/brand";
 import {Model} from "../../models/model";
+import {Vehicle} from "../../models/vehicle.model";
+import {VehicleService} from "../../services/vehicle.service";
 
 @Component({
   selector: 'app-leasing-contract-details',
@@ -19,20 +21,60 @@ export class LeasingContractDetailsComponent implements OnInit {
 
     brands: Brand[] = [];
     models: Model[] = [];
+    vehicles: Vehicle[] = [];
     tempmodels: Model[] = [];
+    tempVehicles: Vehicle[] = [];
 
-  constructor(private leasingService: LeasingContractService,
+     vehicleId:number = 0; // number
+
+    constructor(private leasingService: LeasingContractService,
               private route: ActivatedRoute,
               private router: Router,
-              private brandService: BrandService,) {
+              private brandService: BrandService,
+              private vehicleService: VehicleService) {
     this.leasingContract = new LeasingContract();
   }
 
   ngOnInit(): void {
     this.getLeasingContract(this.route.snapshot.params["id"]);
-      this.getBrands();
-
+      this.getAllVehicles();
   }
+    getAllVehicles() {
+        this.vehicleService.getAll()
+            .subscribe({
+                next: (res) => {
+                    this.tempVehicles = res;
+                    this.filterVehicles();
+                },
+                error: (e) => console.log(e)
+            })
+    }
+
+
+    filterVehicles() {
+        for (let i = 0; i < this.tempVehicles.length; i++) {
+            if(this.tempVehicles[i].available === true) {
+                this.vehicles.push(this.tempVehicles[i]);
+            }
+            if(this.tempVehicles[i].brand == this.leasingContract.vehicle?.brand && this.tempVehicles[i].model == this.leasingContract.vehicle?.model) {
+                this.vehicles.push(this.tempVehicles[i]);
+            }
+        }
+    }
+    selectVehicle(target: any) {
+        let tempModel;
+        let tempBrand;
+      if(this.leasingContract.vehicle) {
+          this.vehicles.forEach(function (val) {
+              if(val.model === target.value) {
+                tempModel = val.model;
+                tempBrand = val.brand
+              }
+          })
+          this.leasingContract.vehicle.model = tempModel ;
+          this.leasingContract.vehicle.brand = tempBrand ;
+      }
+    }
 
   getLeasingContract(id: string): void {
     this.leasingService.get(id)

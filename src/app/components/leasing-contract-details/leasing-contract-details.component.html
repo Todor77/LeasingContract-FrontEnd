@@ -46,42 +46,12 @@
 
         <br>
         <div class="form-group">
-            <label for="brand">Brands</label>
-            <select id="brand" name="brand" (change)="selectBrand($event.target)">
-                <option  *ngFor="let brand of brands" [value]="brand.id" [selected]="brand.name == leasingContract.vehicle?.brand">{{brand.name}}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="model">Model</label>
-            <select id="model" name="model" (change)="selectModel($event.target)">
-                <option *ngFor="let model of models" [value]="model.name" [selected]="model.name == leasingContract.vehicle?.model">{{model.name}}</option>
+            <label for="vehicle">Vehicle</label>
+            <select id="vehicle" name="country" (change)="selectVehicle($event.target)">
+                <option *ngFor="let vehicle of vehicles" [value]="vehicle.model" [selected]="vehicle.model == leasingContract.vehicle?.model">{{vehicle.model}} {{vehicle.brand}}, ({{vehicle.year}})</option>
             </select>
         </div>
         <br>
-        <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.year">
-            <label for="year">Vehicle Year</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    id="year"
-                    [(ngModel)]="leasingContract.vehicle.year"
-                    name="year"
-            />
-        </div>
-
-        <div class="form-group" *ngIf="leasingContract.vehicle && leasingContract.vehicle.vin">
-            <label for="vin">Vehicle VIN</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    id="vin"
-                    [(ngModel)]="leasingContract.vehicle.vin"
-                    name="vin"
-            />
-        </div>
-
-
 
     </form>
 
